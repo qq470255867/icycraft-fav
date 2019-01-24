@@ -1,0 +1,22 @@
+server:
+ port: 8085
+spring:
+  application:
+   name: icycraft-userInfo
+  redis:
+   database: 0
+   password: wsky357951
+   port: 6379
+   host: 111.230.17.188
+   timeout: 100000
+eureka:
+ client:
+  serviceUrl:
+   defaultZone: http://127.0.0.1:8761/eureka/
+feign:
+  client:
+    config:
+      icycraft-userInfo:           #服务名，填写default为所有服务
+        connectTimeout: 100000
+        readTimeout: 120000
+       

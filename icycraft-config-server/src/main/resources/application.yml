@@ -1,0 +1,16 @@
+server:
+ port: 8222
+spring:
+  application:
+   name: icycraft-config-server
+  cloud:
+   config:
+    server:
+     git:
+      uri: https://github.com/qq470255867/icycraft-config/blob/master/Desktop/
+      username: qq470255867
+      password: wsky357951
+eureka:
+ client:
+  serviceUrl:
+   defaultZone: http://127.0.0.1:8761/eureka/

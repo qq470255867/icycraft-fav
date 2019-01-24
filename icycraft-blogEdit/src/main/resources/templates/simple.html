@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="utf-8" />
+<title>简易版MarkDown编辑器</title>
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/editormd.css" />
+<link rel="shortcut icon"
+	href="https://pandao.github.io/editor.md/favicon.ico"
+	type="image/x-icon" />
+</head>
+<body>
+	<div id="layout">
+		<header>
+			<h1>简易版MarkDown编辑器</h1>
+		</header>
+		 <form th:action="@{/postBlog}" th:object="${article}" method="post">
+		 标题:<input type=text name="title"></input>
+		 总结:<input type=text name="summary"></input>
+		 标签:<input type=text name="tags"></input>
+		 分类<select name="catId"> <option >请选择你的分类</option>
+		 <option  th:each="catalog:${catalogs}" th:value="${catalog.id}" th:text="${catalog.name }"></option>
+		 <option>c++</option>
+		 <option>php</option>
+		 
+		 </select>
+			<div id="test-editormd">
+				<textarea name="content" style="display: none;">
+
+</textarea>
+			</div>
+			<input type="submit" name="submit" value="提交表单 Submit"
+				style="padding: 5px;" />
+		</form>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/editormd.min.js"></script>
+	<script type="text/javascript">
+		var testEditor;
+
+		$(function() {
+			testEditor = editormd("test-editormd", {
+				width : "90%",
+				height : 640,
+				syncScrolling : "single",
+				path : "../lib/"
+			});
+
+			/*
+			// or
+			testEditor = editormd({
+			    id      : "test-editormd",
+			    width   : "90%",
+			    height  : 640,
+			    path    : "../lib/"
+			});
+			 */
+		});
+	</script>
+</body>
+</html>
