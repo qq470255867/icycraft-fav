@@ -4,7 +4,7 @@ import java.util.Date;
 
 
 public class Article {
-	
+
 	private Long id;
 
 	private Integer comment_size;
@@ -24,9 +24,10 @@ public class Article {
 	private String title;
 
 	private String vote_size;
+	
 
-	private Long catalog_id;
-
+	private Long catId;
+	
 	private Long userId;
 
 	public Long getId() {
@@ -109,16 +110,17 @@ public class Article {
 		this.vote_size = vote_size;
 	}
 
-	public Long getCatalog_id() {
-		return catalog_id;
+
+
+	
+
+	public Long getCatId() {
+		return catId;
 	}
 
-	public void setCatalog_id(Long catalog_id) {
-		this.catalog_id = catalog_id;
+	public void setCatId(Long catId) {
+		this.catId = catId;
 	}
-
-
-
 
 	public Long getUserId() {
 		return userId;
@@ -127,12 +129,11 @@ public class Article {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
+	
+	
 
-	
-	
 	public Article(Long id, Integer comment_size, String content, Date create_time, String html_content,
-			Integer read_size, String summary, String tags, String title, String vote_size, Long catalog_id,
-			Long userId) {
+			Integer read_size, String summary, String tags, String title, String vote_size, Long catId, Long userId) {
 		super();
 		this.id = id;
 		this.comment_size = comment_size;
@@ -144,7 +145,7 @@ public class Article {
 		this.tags = tags;
 		this.title = title;
 		this.vote_size = vote_size;
-		this.catalog_id = catalog_id;
+		this.catId = catId;
 		this.userId = userId;
 	}
 

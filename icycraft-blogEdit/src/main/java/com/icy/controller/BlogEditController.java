@@ -49,5 +49,13 @@ public class BlogEditController {
 
 		return "redirect:http://localhost:8080";
 	}
+	
+	@PostMapping("/catalogSave")
+	public String catalogSave(Catalog catalog) {
+		
+		catalog.setUserId(userId);
+		blogEditService.addCatalog(catalog);
+		return "redirect:http://localhost:8088";
+	}
 
 }

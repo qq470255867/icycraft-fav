@@ -21,4 +21,16 @@ public class CatalogServiceImpl implements CatalogService {
 		return catalogRepository.getCatalogsByUserId(userId);
 	}
 
+	@Override
+	public void addCatalog(Catalog catalog) {
+		catalogRepository.save(catalog);
+		
+	}
+
+	@Override
+	public Catalog getCatalogById(Long id) {
+		
+		return catalogRepository.getCatalogById(id);
+	}
+
 }

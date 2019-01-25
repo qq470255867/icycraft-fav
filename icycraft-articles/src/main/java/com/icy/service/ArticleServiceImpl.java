@@ -70,4 +70,17 @@ public class ArticleServiceImpl implements ArticleService {
 		return articlesBycatId;
 	}
 
+	@Override
+	public Page<Article> findArticlesByUserId(Long userId, Integer start) {
+		start = start < 0 ? 0 : start;
+
+		Sort sort = new Sort(Sort.Direction.DESC, "id");
+
+		Pageable pageable = PageRequest.of(start, 8, sort);
+
+		Page<Article> articlesByUserId = articleCrud.findArticlesByUserId(userId, pageable);
+		return articlesByUserId;
+		
+	}
+
 }

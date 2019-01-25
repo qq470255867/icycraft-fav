@@ -43,24 +43,23 @@
 						<span></span> <span></span> <span></span>
 					</div>
 					<nav class="normal-s">
-						<ul>
-							<li class="dropdown-plus"><a href="index.html">HOME</a> <span></span>
-								<ul>
-									<li><a href="index.html">Home #1</a></li>
-									<li><a href="index2.html">Home #2</a></li>
-									<li><a href="index3.html">Home #3</a></li>
-									<li><a href="index4.html">Home #4</a></li>
-									<li><a href="index5.html">Home #5</a></li>
-								</ul></li>
-							<li><a href="about.html">ABOUT</a></li>
-							<li><a href="detail.html">PORTFOLIO</a></li>
-							<li class="dropdown-plus"><a href="blog.html">BLOG</a> <span></span>
-								<ul>
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="blogdetail.html">Blog detail</a></li>
-								</ul></li>
-							<li class="active"><a href="contact.html">CONTACT</a></li>
-						</ul>
+						 <ul>
+
+									<li class="dropdown-plus"><a href="http://localhost:8080">首页</a>
+										<span></span>
+									<li><a th:if="${info} == null" th:text="登录"
+										th:href="@{http://localhost:8084/tologin}"></a></li>
+									<li><a th:if="${info} == null" th:text="注册"
+										th:href="@{http://localhost:8084/regist}"></a></li>
+
+									<li><a th:if="${info} != null"
+										th:href="@{http://localhost:8085/userInfo(userId=${info.id})}"
+										th:text="${info.name}"></a></li>
+
+									<li><a th:if="${info} != null"
+										th:href="@{http://localhost:8083/blogByUserId(userId=${info.id},page=0)}">我的文章</a></li>
+
+								</ul>
 					</nav>
 				</div>
 				<div class="section">
@@ -123,23 +122,22 @@
 								<span></span><span></span>
 							</div>
 							<div class="col-lg-2 col-lg-offset-5">
-								<ul>
-									<li class="dropdown-plus"><a href="index.html">HOME</a> <span></span>
-										<ul>
-											<li><a href="index.html">Home #1</a></li>
-											<li><a href="index2.html">Home #2</a></li>
-											<li><a href="index3.html">Home #3</a></li>
-											<li><a href="index4.html">Home #4</a></li>
-											<li><a href="index5.html">Home #5</a></li>
-										</ul></li>
-									<li><a href="about.html">ABOUT</a></li>
-									<li><a href="detail.html">PORTFOLIO</a></li>
-									<li class="dropdown-plus"><a href="blog.html">BLOG</a> <span></span>
-										<ul>
-											<li><a href="blog.html">Blog</a></li>
-											<li><a href="blogdetail.html">Blog detail</a></li>
-										</ul></li>
-									<li><a href="contact.html">CONTACT</a></li>
+								 <ul>
+
+									<li class="dropdown-plus"><a href="http://localhost:8080">首页</a>
+										<span></span>
+									<li><a th:if="${info} == null" th:text="登录"
+										th:href="@{http://localhost:8084/tologin}"></a></li>
+									<li><a th:if="${info} == null" th:text="注册"
+										th:href="@{http://localhost:8084/regist}"></a></li>
+
+									<li><a th:if="${info} != null"
+										th:href="@{http://localhost:8085/userInfo(userId=${info.id})}"
+										th:text="${info.name}"></a></li>
+
+									<li><a th:if="${info} != null"
+										th:href="@{http://localhost:8083/blogByUserId(userId=${info.id},page=0)}">我的文章</a></li>
+
 								</ul>
 							</div>
 						</div>

@@ -50,32 +50,28 @@
                     <nav class="normal-s">
                         <ul>
                             <li class="dropdown-plus active">
-                                <a href="index.html">HOME</a>
+                                <a href="#">首页</a>
                                 <span></span>
                                 <ul>
-                                    <li><a href="index.html">Home #1</a></li>
-                                    <li><a href="index2.html">Home #2</a></li>
-                                    <li><a href="index3.html">Home #3</a></li>
-                                    <li><a href="index4.html">Home #4</a></li>
-                                    <li><a href="index5.html">Home #5</a></li>
+                                   
                                 </ul>
                             </li>
                             <li>
                                 <a th:if="${loginUser} != null" th:href="@{http://localhost:8085/userInfo(userId=${loginUser.id})}" ><span th:text="${loginUser.Name}"></span></a>
                             </li>
                             <li>
-                                <a href="detail.html">PORTFOLIO</a>
-                            </li>
-                            <li class="dropdown-plus">
-                                <a href="blog.html">BLOG</a>
-                                <span></span>
-                                <ul>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blogdetail.html">Blog detail</a></li>
-                                </ul>
+                                <a th:if="${loginUser} == null" th:text="登录" th:href="@{http://localhost:8084/tologin}" ></a>
                             </li>
                             <li>
-                                <a href="contact.html">CONTACT</a>
+                                <a th:if="${loginUser} == null" th:text="注册" th:href="@{http://localhost:8084/regist}" ></a>
+                            </li>
+                            <li>
+                               <a  th:if="${loginUser} != null" th:href="@{http://localhost:8083/blogByUserId(userId=${loginUser.id},page=0)}" th:text="我的文章"></a>
+                            </li>
+                            
+                           
+                            <li>
+                                <a href="#">鸣谢</a>
                             </li>
                         </ul>
                     </nav>
@@ -149,11 +145,7 @@
                                         <a href="index.html">HOME</a>
                                         <span></span>
                                         <ul>
-                                            <li><a href="index.html">Home #1</a></li>
-                                            <li><a href="index2.html">Home #2</a></li>
-                                            <li><a href="index3.html">Home #3</a></li>
-                                            <li><a href="index4.html">Home #4</a></li>
-                                            <li><a href="index5.html">Home #5</a></li>
+                                           
                                         </ul>
                                     </li>
                                     <li>
@@ -182,7 +174,6 @@
         </div>
     </div>
     <!-- end OVERLAY-MENU -->
-    <div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
 
     <!-- content -->
     <div id="content-wrapper">
@@ -216,7 +207,9 @@
                             <div class="description">
                                <a th:href="${url1}" class="biggest-1 mouseover-1"><span th:text="${title1}"></span></a>
                                <div class="empty-space h5-xs"></div>
-                               <p class="small-s"><span th:text="${author1}" ></span></p>
+                               分类:<a th:text=${cat1.name} th:href=@{http://localhost:8083/blogBycat(catId=${cat1.id},userId=${uid1},page=0)}></a>
+                               <div class="empty-space h5-xs"></div>
+                               <p class="small-s"><a th:href="@{http://localhost:8085/userInfo(userId=${uid1})}" th:text="${author1}" ></a></p>
                                <p class="small-s"><span th:text="${date1}" ></span></p>
                             </div>
                         </div>
@@ -230,7 +223,9 @@
                             <div class="description">
                                <a th:href="${url2}" class="biggest-1 mouseover-1"><span th:text="${title2}"></span></a>
                                <div class="empty-space h5-xs"></div>
-                               <p class="small-2"><span th:text="${author2}"></span></p>
+                                分类:<a th:text=${cat2.name} th:href=@{http://localhost:8083/blogBycat(catId=${cat2.id},userId=${uid2},page=0)}></a>
+                               <div class="empty-space h5-xs"></div>
+                               <p class="small-s"><a th:href="@{http://localhost:8085/userInfo(userId=${uid2})}" th:text="${author2}" ></a></p>
                                <p class="small-2"><span th:text="${date2}"></span></p>
                             </div>
                         </div>
@@ -244,7 +239,9 @@
                             <div class="description">
                                <a th:href="${url3}" class="biggest-1 mouseover-1"><span th:text="${title3}"></span></a>
                                <div class="empty-space h5-xs"></div>
-                               <p class="small-2"><span th:text="${author3}"></span></p>
+                                分类:<a th:text=${cat3.name} th:href=@{http://localhost:8083/blogBycat(catId=${cat3.id},userId=${uid3},page=0)}></a>
+                               <div class="empty-space h5-xs"></div>
+                               <p class="small-s"><a th:href="@{http://localhost:8085/userInfo(userId=${uid3})}" th:text="${author3}" ></a></p>
                                <p class="small-2"><span th:text="${date3}"></span></p>
                             </div>
                         </div>
@@ -258,7 +255,9 @@
                             <div class="description">
                                <a th:href="${url4}" class="biggest-1 mouseover-1"><span th:text="${title4}"></span></a>
                                <div class="empty-space h5-xs"></div>
-                               <p class="small-2"><span th:text="${author4}"></span></p>
+                                分类:<a th:text=${cat4.name} th:href=@{http://localhost:8083/blogBycat(catId=${cat4.id},userId=${uid4},page=0)}></a>
+                               <div class="empty-space h5-xs"></div>
+                               <p class="small-s"><a th:href="@{http://localhost:8085/userInfo(userId=${uid4})}" th:text="${author4}" ></a></p>
                                <p class="small-2"><span th:text="${date4}"></span></p>
                             </div>
                         </div>
@@ -272,7 +271,10 @@
                             <div class="description">
                                <a th:href="${url5}" class="biggest-1 mouseover-1"><span th:text="${title5}"></span></a>
                                <div class="empty-space h5-xs"></div>
-                               <p class="small-2"><span th:text="${author5}"></span></p>
+                                分类:<a th:text=${cat5.name} th:href=@{http://localhost:8083/blogBycat(catId=${cat5.id},userId=${uid5},page=0)}></a>
+                               <div class="empty-space h5-xs"></div>
+                               <p class="small-s"><a th:href="@{http://localhost:8085/userInfo(userId=${uid5})}" th:text="${author5}" ></a></p>
+                                 <div class="empty-space h5-xs"></div>
                                 <p class="small-2"><span th:text="${date5}"></span></p>
                             </div>
                         </div>
@@ -286,7 +288,10 @@
                             <div class="description">
                                <a th:href="${url6}" class="biggest-1 mouseover-1"><span th:text="${title6}"></span></a>
                                <div class="empty-space h5-xs"></div>
-                               <p class="small-2"><span th:text="${author6}"></span></p>
+                                分类:<a th:text=${cat6.name} th:href=@{http://localhost:8083/blogBycat(catId=${cat6.id},userId=${uid6},page=0)}></a>
+                                <div class="empty-space h5-xs"></div>
+                               <p class="small-s"><a th:href="@{http://localhost:8085/userInfo(userId=${uid6})}" th:text="${author6}" ></a></p>
+                                 <div class="empty-space h5-xs"></div>
                                <p class="small-2"><span th:text="${date6}"></span></p>
                             </div>
                         </div>
@@ -296,11 +301,16 @@
                     <div class="empty-space h55-xs h110-lg"></div>
                     <div class="img-block">
                         <a th:href="${url7}" ><img src="img/img-7.jpg" alt=""></a>
+                        
                         <div class="description-wrapper">
                             <div class="description">
                                <a th:href="${url7}" class="biggest-1 mouseover-1"><span th:text="${title7}"></span></a>
                                <div class="empty-space h5-xs"></div>
-                               <p class="small-2"><span th:text="${author7}"></span></p>
+                               
+                                分类:<a th:text=${cat7.name} th:href=@{http://localhost:8083/blogBycat(catId=${cat7.id},userId=${uid7},page=0)}></a>
+                                <div class="empty-space h5-xs"></div>
+                               <p class="small-s"><a th:href="@{http://localhost:8085/userInfo(userId=${uid7})}" th:text="${author7}" ></a></p>
+                                 <div class="empty-space h5-xs"></div>
                                <p class="small-2"><span th:text="${date7}"></span></p>
                             </div>
                         </div>
@@ -314,7 +324,10 @@
                             <div class="description">
                                <a th:href="${url8}" class="biggest-1 mouseover-1"><span th:text="${title8}"></span></a>
                                <div class="empty-space h5-xs"></div>
-                               <p class="small-2"><span th:text="${author8}"></span></p>
+                                 分类:<a th:text=${cat8.name} th:href=@{http://localhost:8083/blogBycat(catId=${cat8.id},userId=${uid8},page=0)}></a>
+                                <div class="empty-space h5-xs"></div>
+                                <p class="small-s"><a th:href="@{http://localhost:8085/userInfo(userId=${uid8})}" th:text="${author8}" ></a></p>
+                                 <div class="empty-space h5-xs"></div>
                                <p class="small-2"><span th:text="${date8}"></span></p>
                             </div>
                         </div>
@@ -337,21 +350,7 @@
                     <div class="col-md-5 col-sm-8 col-xs-12">
                         <nav class="small-2">
                             <ul>
-                                <li class="footer-nav active">
-                                    <a href="index.html">HOME</a>
-                                </li>
-                                <li class="footer-nav">
-                                    <a href="about.html">ABOUT</a>
-                                </li>
-                                <li class="footer-nav">
-                                    <a href="detail.html">PORTFOLIO</a>
-                                </li>
-                                <li class="footer-nav">
-                                    <a href="blog.html">BLOG</a>
-                                </li>
-                                <li class="footer-nav">
-                                    <a href="contact.html">CONTACT</a>
-                                </li>
+                              
                             </ul>
                         </nav>
                         <div class="empty-space h20-xs h0-md"></div>
@@ -361,9 +360,9 @@
                             <div class="input-wrapper">
                                 <div class="input-style">
                                     <input id="input" name="email" type="text">
-                                    <label for="input">E-mail</label>
+                                    <label for="input">感谢你的建议</label>
                                 </div>
-                                <button class="btn-style1" type="submit"><span>SUBSCRIBE</span></button>
+                                <button class="btn-style1" type="submit"><span>提交</span></button>
                             </div>
                         </form>
                     </div>
@@ -391,7 +390,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="copyright normal-s">
-                            Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+                           
                         </div>
                     </div>
                 </div>
@@ -402,20 +401,8 @@
         <div class="swiper-under-footer">
             <div class="swiper-container" data-speed="1000" data-breakpoints="1" data-slides-per-view="9" data-xs-slides="3" data-sm-slides="5" data-md-slides="7" data-lg-slides="9">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-1.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-2.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-3.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-4.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-5.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-6.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-7.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-8.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-9.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-1.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-2.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-3.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-4.jpg" alt="#"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="img/img-footer-5.jpg" alt="#"></a></div>
+                    <div th:each="auser:${activeUser}" class="swiper-slide"><a th:href="@{http://localhost:8085/userInfo(userId=${auser.id})}"><img th:src="@{'img/img-footer-'+${auser.avatar}+'.jpg'}"  th:alt="${auser.name}"></a></div>
+                   
                 </div>
             </div>
         </div>
@@ -430,10 +417,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 text-center">
-                            <div class="h2 white"><b class="text-popup-title">submit</b></div>
+                            <div class="h2 white"><b class="text-popup-title">提交</b></div>
                             <div class="empty-space h15-xs"></div>
                             <div class="white text-popup-message">
-                                The following fields should be filled:- Name - Email - Your Message
+                                	
                             </div>
                         </div>
                     </div>

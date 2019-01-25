@@ -1,5 +1,7 @@
 package com.icy.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +35,11 @@ public class UserInfoController {
 		
 		
 		userInfoService.updateUserInfo(userInfo);
+	}
+	
+	@GetMapping("/getAllUser")
+	public List<UserInfo> getAllUsers() {
+		return userInfoService.getAllUser();
 	}
 
 }

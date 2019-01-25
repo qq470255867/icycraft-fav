@@ -67,11 +67,11 @@
 						GA. Catch up on my latest projects and get in touch.</p>
 				</div>
 				<div class="category">
-				<a th:href="@{/blogByUserId(userId=${id},page=0)}"> <span class="small-1">全部文章</span></a>
-					<ul th:each="catalog:${catalogs}">
-						<li class="active"><a
-							th:href="@{/blogBycat(catId=${catalog.id},userId=${id},page=0)}"><p
-									style="color: black;" th:utext="${catalog.name}"></p></a></li>
+					<a th:href="@{/blogByUserId(userId=${id},page=0)}"> <span class="small-1">全部文章</span></a>										
+					<ul th:each="catalog:${catalogs}">						
+						<li class="active">
+						<a th:href="@{/blogBycat(catId=${catalog.id},userId=${id},page=0)}">
+						<p style="color: black;" th:utext="${catalog.name}"></p></a></li>
 					</ul>
 				</div>
 				<div class="sort-by">
@@ -120,7 +120,7 @@
 								<span></span><span></span>
 							</div>
 							<div class="col-lg-2 col-lg-offset-5">
-							   <ul>
+								   <ul>
 
 									<li class="dropdown-plus"><a href="http://localhost:8080">首页</a>
 										<span></span>
@@ -173,6 +173,7 @@
 								aria-hidden="true"></i>
 							</a>
 						</div>
+			
 						<ul th:each="catalog:${catalogs}">
 							<li>
 						<a th:text="${catalog.name}" th:href="@{/blogBycat(catId=${catalog.id},userId=${id},page=0)}">
@@ -185,7 +186,7 @@
 			<div class="empty-space h40-xs h60-md"></div>
 
 			<!--left-right -->
-			<div class="left-right">
+						<div class="left-right">
 				<div class="row"  th:if="${article1} ne null">
 					<div class="col-md-6"></div>
 					<div class="col-md-6">
@@ -346,7 +347,7 @@
 					</div>
 				</div>
 				<div class="empty-space h30-xs fl"></div>
-				<div class="row"  th:if="${article4} ne null">
+				<div class="row"  th:if="${article5} ne null">
 					<div class="col-md-6"></div>
 					<div class="col-md-6">
 						<div class="clip left-side">
@@ -391,22 +392,22 @@
 			<div class="page-pagination">
 				<ul th:if="${TotalElements} ne '0'">
 					<li th:if=" ${pageNum} ne '0'"><a
-						th:href="@{/blogBycat(catId=${curcat},userId=${id},page=0)}">FIRST</a></li>
+						th:href="@{/blogByUserId(userId=${id},page=0)}">FIRST</a></li>
 					<li th:if=" ${pageNum} ne '0'"><a
-						th:href="@{/blogBycat(catId=${curcat},userId=${id},page=${pageNum-1})}">UP</a></li>
+						th:href="@{/blogByUserId(userId=${id},page=${pageNum-1})}">UP</a></li>
 					<li th:if="${totalPage} gt ${pageNum+1}"><a
-						th:href="@{/blogBycat(catId=${curcat},userId=${id},page=${pageNum+1})}"><span
+						th:href="@{/blogByUserId(userId=${id},page=${pageNum+1})}"><span
 							th:text="${pageNum+1}"></span></a></li>
 					<li th:if="${totalPage} gt ${pageNum+2}"><a
-						th:href="@{/blogBycat(catId=${curcat},userId=${id},page=${pageNum+2})}"><span
+						th:href="@{/blogByUserId(userId=${id},page=${pageNum+2})}"><span
 							th:text="${pageNum+2}"></span></a></li>
 					<li th:if="${totalPage} gt ${pageNum+3}"><a
-						th:href="@{/blogBycat(catId=${curcat},userId=${id},page=${pageNum+3})}"><span
+						th:href="@{/blogByUserId(userId=${id},page=${pageNum+3})}"><span
 							th:text="${pageNum+3}"></span></a></li>
 					<li th:if="${totalPage} gt ${pageNum}"><a
-						th:href="@{/blogBycat(catId=${curcat},userId=${id},page=${pageNum+1})}">DOWN</a></li>
+						th:href="@{/blogByUserId(userId=${id},page=${pageNum+1})}">DOWN</a></li>
 					<li th:if="${totalPage} ne ${pageNum}"><a
-						th:href="@{/blogBycat(catId=${curcat},userId=${id},page=${totalPage})}">LAST</a></li>
+						th:href="@{/blogByUserId(userId=${id},page=${totalPage})}">LAST</a></li>
 				</ul>
 			</div>
 		</div>

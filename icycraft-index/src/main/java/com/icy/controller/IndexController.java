@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.icy.service.IndexService;
 import com.icy.vo.Article;
-import com.icy.vo.User;
+import com.icy.vo.Catalog;
+import com.icy.vo.UserInfo;
 
 @Controller
 public class IndexController {
@@ -34,7 +35,7 @@ public class IndexController {
 
 				userId = Long.valueOf(cookie.getValue());
 			}
-			User loginUser = indexService.getUserById(userId);
+			UserInfo loginUser = indexService.getUserById(userId);
 
 			model.addAttribute("loginUser", loginUser);
 		}
@@ -44,7 +45,11 @@ public class IndexController {
 		for (Article article : articles) {
 			i++;
 
-			User user = indexService.getUserById(article.getUserId());
+			UserInfo user = indexService.getUserById(article.getUserId());
+
+			Catalog catalog = indexService.getCatalogById(article.getCatId());
+
+			model.addAttribute("cat" + i, catalog);
 
 			model.addAttribute("title" + i, article.getTitle());
 
@@ -52,9 +57,17 @@ public class IndexController {
 
 			model.addAttribute("author" + i, user.getName());
 			
-			model.addAttribute("url"+i, "http://localhost:8089/blogDetail?id="+article.getId());
+			model.addAttribute("uid" + i, user.getId());
+			
+			
+
+			model.addAttribute("url" + i, "http://localhost:8089/blogDetail?id=" + article.getId());
 
 		}
+
+		List<UserInfo> activeUser = indexService.getActiveUser();
+
+		model.addAttribute("activeUser", activeUser);
 
 		return "index";
 

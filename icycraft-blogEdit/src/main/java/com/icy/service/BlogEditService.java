@@ -10,5 +10,8 @@ public interface BlogEditService {
 	Article blogSave(Article article);
 
 	List<Catalog> getCatalogs(Long userId);
+	
+	
+	void addCatalog(Catalog catalog);
 
 }

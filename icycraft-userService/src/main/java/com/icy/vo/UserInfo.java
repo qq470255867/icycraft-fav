@@ -1,13 +1,8 @@
-package com.icy.domain;
+package com.icy.vo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class UserInfo {
 
-	@Id
+
 	private Long Id;
 	private String Name;
 	private String avatar;
@@ -17,7 +12,7 @@ public class UserInfo {
 	private String birthday;
 	private String gender;
 	private String address;
-	@Column(name="user_id")
+	
 	private Long userId;
 
 	public Long getId() {

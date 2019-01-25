@@ -20,5 +20,7 @@ public interface ArticleService {
 	
 	Page<Article> findArticlesByCatIdAndUserId(Long catId, Long userId,Integer page);
 	
+	Page<Article> findArticlesByUserId(Long userId,Integer page);
+	
 
 }

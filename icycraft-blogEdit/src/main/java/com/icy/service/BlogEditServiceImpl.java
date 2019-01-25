@@ -24,7 +24,7 @@ public class BlogEditServiceImpl implements BlogEditService {
 	public Article blogSave(Article article) {
 
 		
-		article.setComment_size(11);
+		
 		article.setCreate_time(new Date());
 
 		
@@ -36,6 +36,12 @@ public class BlogEditServiceImpl implements BlogEditService {
 	public List<Catalog> getCatalogs(Long userId) {
 
 		return catalogFeign.getCatalogByUser_Id(userId);
+	}
+
+	@Override
+	public void addCatalog(Catalog catalog) {
+		catalogFeign.addCatalog(catalog);
+		
 	}
 
 }

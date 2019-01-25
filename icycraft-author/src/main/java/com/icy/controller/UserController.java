@@ -47,5 +47,6 @@ public class UserController {
 		return userService.findByUserName(userName);
 		
 	}
+	
 
 }

@@ -16,6 +16,6 @@ eureka:
 feign:
   client:
     config:
-      icycraft-blogDetail:           #服务名，填写default为所有服务
+      default:           #服务名，填写default为所有服务
         connectTimeout: 100000
         readTimeout: 1200000

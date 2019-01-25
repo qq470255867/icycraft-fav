@@ -26,5 +26,7 @@ public interface ArticleCrudRepository extends PagingAndSortingRepository<Articl
 	
 	
 	Page<Article> findArticlesByUserIdAndCatId(Long userId,Long catId,Pageable pageable);
+	
+	Page<Article> findArticlesByUserId(Long userId,Pageable pageable);
 
 }

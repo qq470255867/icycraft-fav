@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.icy.vo.User;
+import com.icy.vo.UserInfo;
 
 @FeignClient(name="icycraft-author")
 public interface UserFeign {
@@ -16,6 +17,9 @@ public interface UserFeign {
 	
 	@GetMapping("/User/getUser")
 	User getUser(@RequestParam String userName);
+	
+	@PostMapping("/update")
+	public void updateUserInfo(@RequestBody UserInfo userInfo); 
 	
 	
 

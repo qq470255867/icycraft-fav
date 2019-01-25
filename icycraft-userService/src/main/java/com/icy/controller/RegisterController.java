@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.icy.service.RegisterService;
 import com.icy.vo.User;
+import com.icy.vo.UserInfo;
 
 @Controller
 public class RegisterController {
@@ -25,6 +26,14 @@ public class RegisterController {
 	String addUser(@ModelAttribute User user) {
 
 		int code = registerService.userRigister(user);
+
+		User userByUserName = registerService.getUserByUserName(user.getUserName());
+		Long id = userByUserName.getId();
+		UserInfo userInfo = new UserInfo();
+		userInfo.setId(id);
+		userInfo.setUserId(id);
+		userInfo.setName(userByUserName.getName());
+		registerService.addUserInfo(userInfo);
 
 		if (code == 200) {
 

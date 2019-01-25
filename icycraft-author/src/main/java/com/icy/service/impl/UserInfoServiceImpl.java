@@ -1,5 +1,7 @@
 package com.icy.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,12 @@ public class UserInfoServiceImpl implements UserInfoService {
 		
 		System.out.println(userInfo.toString());
 		
+	}
+
+	@Override
+	public List<UserInfo> getAllUser() {
+		
+		return userInfoRepository.findUsers();
 	}
 
 }

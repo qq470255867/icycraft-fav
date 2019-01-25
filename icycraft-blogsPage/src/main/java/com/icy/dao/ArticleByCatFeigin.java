@@ -12,6 +12,13 @@ public interface ArticleByCatFeigin {
 	@GetMapping("/article/blogBycat")
 	PageInfo<Article> getArticleByCid(@RequestParam Long catId,@RequestParam int page);
 	
+	@GetMapping("/article/blogByCatAndUserId")
+	public PageInfo<Article> blogByCatAndUserId(@RequestParam Long catId,@RequestParam long userId,
+			@RequestParam(defaultValue = "0") int page);
 	
+	
+	@GetMapping("/article/blogByUserId")
+	public PageInfo<Article> blogByUserId(@RequestParam long userId,
+			@RequestParam(defaultValue = "0") int page);
 
 }

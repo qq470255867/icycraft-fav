@@ -63,5 +63,14 @@ public class ArticleController {
 
 		return list;
 	}
+	
+	@GetMapping("/blogByUserId")
+	public Page<Article> blogByUserId(@RequestParam long userId,
+			@RequestParam(defaultValue = "0") int page) {
+
+		Page<Article> list = articleService.findArticlesByUserId(userId, page);
+
+		return list;
+	}
 
 }

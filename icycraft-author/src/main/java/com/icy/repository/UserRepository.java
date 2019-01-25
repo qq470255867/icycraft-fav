@@ -17,5 +17,7 @@ public interface UserRepository extends CrudRepository<User,Serializable>{
 	List<Catalog> findCatalogsById(Long Id);
 	
 	User findUserByUserName(String userName);
+	
+	
 
 }

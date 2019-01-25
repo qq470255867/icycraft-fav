@@ -4,10 +4,14 @@ public class CommentWithUserName {
 
 	private Comment comment;
 	private String userName;
-	public CommentWithUserName(Comment comment, String userName) {
+	private String avatar;
+	
+	
+	public CommentWithUserName(Comment comment, String userName, String avatar) {
 		super();
 		this.comment = comment;
 		this.userName = userName;
+		this.avatar = avatar;
 	}
 	public Comment getComment() {
 		return comment;
@@ -24,6 +28,12 @@ public class CommentWithUserName {
 	public CommentWithUserName() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 	
 	

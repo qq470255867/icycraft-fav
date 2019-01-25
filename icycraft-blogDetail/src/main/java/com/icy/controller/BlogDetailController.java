@@ -1,6 +1,5 @@
 package com.icy.controller;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,13 +29,29 @@ public class BlogDetailController {
 
 	@Autowired
 	CommentService commentService;
-	
+
 	Long blogId;
 
 	@GetMapping("/blogDetail")
-	public String toBlogDetail(@RequestParam Long id, Model model) {
+	public String toBlogDetail(@RequestParam Long id, Model model,HttpServletRequest request) {
+
+		
+		
 		
 		blogId = id;
+		
+		
+		Cookie[] cookies = request.getCookies();
+		
+		UserInfo loginUser= null;
+		if (cookies!=null) {
+			
+			for (Cookie cookie : cookies) {
+				long userId = Long.parseLong(cookie.getValue());
+				loginUser = blogDetialService.getUserInfo(userId);
+			}
+		}
+		model.addAttribute("info", loginUser);
 
 		Article article = blogDetialService.getBlogById(id);
 
@@ -51,14 +66,12 @@ public class BlogDetailController {
 			Long userId = comment.getUserId();
 
 			UserInfo info = blogDetialService.getUserInfo(userId);
-			
-			commnetList.add(new CommentWithUserName(comment, info.getName()));
+
+			commnetList.add(new CommentWithUserName(comment, info.getName(), info.getAvatar()));
 
 		}
-		
-		model.addAttribute("commnetList", commnetList);
 
-		
+		model.addAttribute("commnetList", commnetList);
 
 		model.addAttribute("user", userInfo);
 
@@ -69,25 +82,25 @@ public class BlogDetailController {
 		return "blogdetail";
 	}
 
-	@PostMapping(value="/saveComment")
-	public String saveComment( Comment comment,HttpServletRequest request) {
+	@PostMapping(value = "/saveComment")
+	public String saveComment(Comment comment, HttpServletRequest request) {
 
 		Cookie[] cookies = request.getCookies();
-		if (cookies==null) {
-			
+		if (cookies == null) {
+
 			return "redirect:http://localhost:8084/tologin";
 		}
-		
+
 		for (Cookie cookie : cookies) {
 			long userId = Long.parseLong(cookie.getValue());
 			comment.setUserId(userId);
 		}
 		comment.setBlogId(blogId);
 		comment.setCreateTime(new Date());
-		
+
 		commentService.saveCommnet(comment);
 
-		return "redirect:blogdetail";
+		return "redirect:http://localhost:8089/blogDetail?id=" + blogId;
 
 	}
 

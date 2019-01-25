@@ -36,13 +36,18 @@ public class UserInfoController {
 	public String userInfo(@RequestParam Long userId, Model model, HttpServletRequest request) {
 
 		Cookie[] cookies = request.getCookies();
-		for (Cookie cookie : cookies) {
-
-			Long userIdFromCookie = Long.parseLong(cookie.getValue());
-
-			model.addAttribute("userIdFromCookie", userIdFromCookie);
+		if (cookies!=null) {
+			
+			for (Cookie cookie : cookies) {
+				
+				Long userIdFromCookie = Long.parseLong(cookie.getValue());
+				
+				model.addAttribute("info", userInfoService.getUserInfo(userIdFromCookie));
+			}
 		}
 		UserId = userId;
+		
+		
 
 		model.addAttribute("userId", userId);
 
@@ -71,9 +76,15 @@ public class UserInfoController {
 	}
 	
 	@GetMapping("/update")
-	String toPage(Model model) {
-		UserInfo info = userInfoService.getUserInfo(UserId);
-		model.addAttribute("info", info);
+	String toPage(Model model,HttpServletRequest request) {
+		
+		Cookie[] cookies = request.getCookies();
+		for (Cookie cookie : cookies) {
+			Long userIdFromCookie = Long.parseLong(cookie.getValue());
+			UserInfo info = userInfoService.getUserInfo(userIdFromCookie);
+			model.addAttribute("info", info);
+		}
+		
 		return "update";
 	}
 	
@@ -82,9 +93,9 @@ public class UserInfoController {
 	public String updateUserInfo(UserInfo userInfo,HttpServletRequest request) {
 		
 		Cookie[] cookies = request.getCookies();
-		
+		Long userId = null;
 		for (Cookie cookie : cookies) {
-			Long userId = Long.parseLong(cookie.getValue());
+			userId = Long.parseLong(cookie.getValue());
 			
 			userInfo.setUserId(userId);
 			userInfo.setId(userId);
@@ -92,7 +103,8 @@ public class UserInfoController {
 		
 		
 		
-		UserInfo info = userInfoService.getUserInfo(UserId);
+		
+		UserInfo info = userInfoService.getUserInfo(userId);
 		
 		if (userInfo.getAvatar()==null) {
 			userInfo.setAvatar(info.getAvatar());

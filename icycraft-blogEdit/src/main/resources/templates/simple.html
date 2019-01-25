@@ -15,14 +15,23 @@
 		<header>
 			<h1>简易版MarkDown编辑器</h1>
 		</header>
+		
+		<form th:action="@{/catalogSave}" th:object="${catalog}" method="post">
+		添加一个分类<input type=text name="name"></input>
+		<input type="submit" name="submit" value="确定"
+				/>
+		</form>
+		
 		 <form th:action="@{/postBlog}" th:object="${article}" method="post">
-		 标题:<input type=text name="title"></input>
-		 总结:<input type=text name="summary"></input>
-		 标签:<input type=text name="tags"></input>
-		 分类<select name="catId"> <option >请选择你的分类</option>
+		 <ul >
+		<li> 标题:<input type=text name="title"></input></li>
+		<li> 总结:<input type=text name="summary"></input></li>
+		<li> 标签:<input type=text name="tags"></input></li>
+		 <li>分类<select name="catId"> <option >请选择你的分类</option>
 		 <option  th:each="catalog:${catalogs}" th:value="${catalog.id}" th:text="${catalog.name }"></option>
-		 <option>c++</option>
-		 <option>php</option>
+		 </li>
+		 
+		</ul>
 		 
 		 </select>
 			<div id="test-editormd">
